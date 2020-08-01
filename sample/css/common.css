@@ -1,0 +1,89 @@
+﻿@charset "utf-8";
+
+/* .viewer
+------------------------- */
+.viewer {
+	margin: 0 auto;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.viewer ul {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.viewer ul li {
+	top: 0;
+	left: 0;
+	width: 100%;
+	position: absolute;
+}
+.viewer ul li img {
+	width: 100%;
+}
+
+/* sideNavi
+------------------------- */
+.viewer .btnPrev,
+.viewer .btnNext {
+	margin-top: -25px;
+	top: 50%;
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	z-index: 101;
+}
+.viewer .btnPrev {
+	left: 10px;
+	background: #ccc url(../img/btnPrev.jpg) no-repeat center center;
+}
+.viewer .btnNext {
+	right: 10px;
+	background: #ccc url(../img/btnNext.jpg) no-repeat center center;
+}
+
+
+/* =======================================
+	ClearFixElements
+======================================= */
+.viewer ul:after {
+	content: ".";
+	height: 0;
+	clear: both;
+	display: block;
+	visibility: hidden;
+}
+
+.viewer ul {
+	display: inline-block;
+	overflow: hidden;
+}
+
+
+/* ------------------------------------------------
+	いちよmediaQueriesの指定を入れておきますが
+	スライドショー動作には関連しておりません。
+------------------------------------------------ */
+
+/* ===========================================
+	デスクトップ系 769 - 1024
+=========================================== */
+@media screen and (max-width: 1024px) {
+	.viewer {
+	}
+}
+/* ===========================================
+	タブレット系 749 - 768
+=========================================== */
+/* @media screen and (max-width: 768px) { */
+	/* .viewer { */
+	/* } */
+/* } */
+/* ===========================================
+	スマートフォン系 748 -
+=========================================== */
+@media screen and (max-width: 748px) {
+	.viewer {
+	}
+}

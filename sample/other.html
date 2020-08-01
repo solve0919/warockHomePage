@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="home.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <title>和ROCK ORIGAMI</title>
+    <link rel="shortcut icon" href="image/top.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <!-- [if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif] -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+    $(function(){
+    	$(window).load(function(){
+    		var setElm = $('.viewer'),
+    		setMaxWidth = 1200,
+    		setMinWidth = 320,
+    		fadeSpeed = 1500,
+    		switchDelay = 5000,
+    		sideNavi = 'on', // 'on' or 'off'
+    		sideHide = 'show', // 'hide' or 'show'
+    		naviOpc = 0.5;
+
+    		setElm.each(function(){
+    			var targetObj = $(this),
+    			findUl = targetObj.find('ul'),
+    			findLi = targetObj.find('li'),
+    			findLiFirst = targetObj.find('li:first');
+
+    			findLi.css({display:'block',opacity:'0',zIndex:'99'});
+    			findLiFirst.css({zIndex:'100'}).stop().animate({opacity:'1'},fadeSpeed);
+
+    			function timer(){
+    				setTimer = setInterval(function(){
+    					slideNext();
+    				},switchDelay);
+    			}
+    			timer();
+
+    			function slideNext(){
+    				findUl.find('li:first-child').not(':animated').animate({opacity:'0'},fadeSpeed).next('li').css({zIndex:'100'}).animate({opacity:'1'},fadeSpeed).end().appendTo(findUl).css({zIndex:'99'});
+    			}
+    			function slidePrev(){
+    				findUl.find('li:first-child').not(':animated').css({zIndex:'99'}).animate({opacity:'0'},fadeSpeed).siblings('li:last-child').css({zIndex:'100'}).animate({opacity:'1'},fadeSpeed).prependTo(findUl);
+    			}
+    			targetObj.css({width:setMaxWidth,display:'block'});
+
+    			// メイン画像をベースにエリアの幅と高さを設定
+    			var setLiImg = findLi.find('img'),
+    			baseWidth = setLiImg.width(),
+    			baseHeight = setLiImg.height();
+
+    			// レスポンシブ動作メイン
+    			function imgSize(){
+    				var windowWidth = parseInt($(window).width());
+    				if(windowWidth >= setMaxWidth) {
+    					targetObj.css({width:setMaxWidth,height:baseHeight});
+    					findUl.css({width:baseWidth,height:baseHeight});
+    					findLi.css({width:baseWidth,height:baseHeight});
+    				} else if(windowWidth < setMaxWidth) {
+    					if(windowWidth >= setMinWidth) {
+    						targetObj.css({width:'100%'});
+    						findUl.css({width:'100%'});
+    						findLi.css({width:'100%'});
+    					} else if(windowWidth < setMinWidth) {
+    						targetObj.css({width:setMinWidth});
+    						findUl.css({width:setMinWidth});
+    						findLi.css({width:setMinWidth});
+    					}
+    					var reHeight = setLiImg.height();
+    					targetObj.css({height:reHeight});
+    					findUl.css({height:reHeight});
+    					findLi.css({height:reHeight});
+    				}
+    			}
+    			$(window).resize(function(){imgSize();}).resize();
+
+    			// サイドナビボタン（有り無し）
+    			var agent = navigator.userAgent;
+    			if(sideNavi == 'on'){
+    				targetObj.append('<a href="javascript:void(0);" class="btnPrev"></a><a href="javascript:void(0);" class="btnNext"></a>');
+    				var btnPrev = targetObj.find('.btnPrev'),btnNext = targetObj.find('.btnNext'),btnPrevNext = targetObj.find('.btnPrev,.btnNext');
+
+    				if(agent.search(/iPhone/) != -1 || agent.search(/iPad/) != -1 || agent.search(/iPod/) != -1 || agent.search(/Android/) != -1){
+    					btnPrevNext.css({opacity:naviOpc});
+    				} else {
+    					btnPrevNext.css({opacity:naviOpc}).hover(function(){
+    						$(this).stop().animate({opacity:naviOpc+0.2},200);
+    					},function(){
+    						$(this).stop().animate({opacity:naviOpc},200);
+    					});
+    				}
+
+    				if(sideHide == 'hide'){
+    					if(agent.search(/iPhone/) != -1 || agent.search(/iPad/) != -1 || agent.search(/iPod/) != -1 || agent.search(/Android/) != -1){
+    						btnPrevNext.css({visibility:'visible'});
+    					} else {
+    						btnPrevNext.css({visibility:'hidden'});
+    						targetObj.hover(function(){
+    							btnPrevNext.css({visibility:'visible'});
+    						},function(){
+    							btnPrevNext.css({visibility:'hidden'});
+    						});
+    					}
+    				}
+
+    				btnPrev.click(function(){switchPrev();});
+    				btnNext.click(function(){switchNext();});
+    			}
+
+    			// ボタン移動動作
+    			function switchNext(){
+    				findLi.not(':animated').parents('ul').each(function(){
+    					clearInterval(setTimer);
+    					slideNext();
+    					timer();
+    				});
+    			}
+    			function switchPrev(){
+    				findLi.not(':animated').parents('ul').each(function(){
+    					clearInterval(setTimer);
+    					slidePrev();
+    					timer();
+    				});
+    			}
+
+    		});
+    	});
+    });
+    </script>
+  </head>
+<body>
+  <header>
+    <div class="sidespace head_img" align="center">
+      <a href="index.html"><img class="img" src="image/img_1554100992.jpg"> </a>
+    </div>
+    <nav class="navbar navbar-expand-md navbar-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav3" aria-controls="navbarNav3" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-center" id="navbarNav3">
+				<ul class="navbar-nav">
+          <li class="nav-item top_nav">
+            <a class="nav-link" href="collection.html">Collection</a>
+          </li>
+          <li class="nav-item top_nav">
+            <a class="nav-link" href="clutch_bag.html">Clutch bag</a>
+          </li>
+          <li class="nav-item top_nav">
+            <a class="nav-link" href="handbag.html">Handbag</a>
+          </li>
+          <li class="nav-item top_nav">
+            <a class="nav-link" href="costum.html">Costume</a>
+          </li>
+          <li class="nav-item top_nav">
+            <a class="nav-link" href="dog_wear.html">Dog Wear</a>
+          </li>
+          <li class="nav-item top_nav">
+            <!-- リンク予定 <a class="nav-link" href="other.html">Other</a> -->
+            <a class="nav-link">Other</a>
+          </li>
+        </ul>
+			</div>
+		</nav>
+  </header>
+
+  <div class="sidespace"  align="center">
+    <div class="row">
+        <a href="handbag.html"><img src="image/top3.jpg" width="100%"></a>
+    </div>
+  </div>
+  <div class="sidespace pt-3 pb-3">
+    <h1>Other</h1>
+  </div>
+
+  <div class="sidespace">
+    <div class="row" align="center">
+        <div class="col-sm-3 container">
+          <a href="handbag.html"><img src="image/56832667_271996623736439_2143396711739949056_n.gif" width="100%" align="center"></a>
+          <h3 class="pt-3 pb-3">シザーバッグ</h3>
+        </div>
+
+        <div class="col-sm-3 container">
+          <a href="handbag.html"><img src="image/56832667_271996623736439_2143396711739949056_n.gif" width="100%" align="center"></a>
+          <h3 class="pt-3 pb-3">ブックカバー</h3>
+        </div>
+        <div class="col-sm-3 container">
+          <a href="handbag.html"><img src="image/56832667_271996623736439_2143396711739949056_n.gif" width="100%" align="center"></a>
+          <h3 class="pt-2 pb-3">帯アート</h3>
+        </div>
+
+    </div>
+  </div>
+  <footer>
+    <ul class="nav justify-content-center pt-3">
+      <li class="nav-item">
+        <a class="nav-link " href="news.html">News</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="concept.html">Concept</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://origamibag.thebase.in/" target="_blank">Online shop</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="recruitment.html">Recruitment</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="mailto:origamibag.japan@gmail.com">Contact</a>
+      </li>
+    </ul>
+    <ul class="follow-me">
+        <li><a href="https://twitter.com/origamibag" class="twitter" target="_blank"></a><li>
+        <li><a href="https://www.facebook.com/%E5%92%8C-ROCKORIGAMIBAG-SHOP-1060754807446504/" class="facebook" target="_blank"></a></li>
+        <li><a class="pl-3" href="https://www.instagram.com/origamibag_official/" target="_blank"> <img src="image/insta.png"> </a></li>
+    </ul>
+    <div class="copylight pt-1">
+  <a>copylight @ 2019 Origami all rights reserved</a>
+    </div>
+  </footer>
+    </body>
+  </html>

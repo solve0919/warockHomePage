@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="home.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+
+    <title>和ROCK ORIGAMI</title>
+    <link rel="shortcut icon" href="image/top.ico" type="image/vnd.microsoft.icon">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+            $(document).ready(function(){
+                $('.slider').bxSlider({
+                    auto: true,
+                    pause: 5000,
+                });
+            });
+    </script>
+  </head>
+<body>
+  <header>
+    <div class="sidespace head_img" align="center">
+      <a href="top.html"><img class="img" src="image/img_1554100992.jpg"> </a>
+    </div>
+    <nav class="navbar navbar-expand-md navbar-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav3" aria-controls="navbarNav3" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-center" id="navbarNav3">
+				<ul class="navbar-nav">
+          <li class="nav-item top_nav">
+            <a class="nav-link" href="collection.html">Collection</a>
+          </li>
+          <li class="nav-item top_nav">
+            <a class="nav-link" href="clutch_bag.html">Clutch bag</a>
+          </li>
+          <li class="nav-item top_nav">
+            <a class="nav-link" href="handbag.html">Handbag</a>
+          </li>
+          <li class="nav-item top_nav">
+            <a class="nav-link" href="coustum.html">Costume</a>
+          </li>
+          <li class="nav-item top_nav">
+            <a class="nav-link" href="dog_wear.html">Dog Wear</a>
+          </li>
+          <li class="nav-item top_nav">
+            <a class="nav-link" href="other">Other</a>
+          </li>
+        </ul>
+			</div>
+		</nav>
+  </header>
+
+
+<div class="imagebox container pt-3 pb-3 d-none d-md-block" align="center">
+  <div class="relative images row">
+    <img src="image/clutchbag_a.jpg" alt=""> <!-- 初期設定画像 500px -->
+    <div ID="moji3" style="visibility:hidden;" class ="absolute pr-3">
+      <img src="image/clutchbag_e.jpg" ><!-- 3つめ 500px -->
+    </div>
+    <div ID="moji2" style="visibility:hidden;" class ="absolute">
+      <img src="image/clutchbag_c.jpg" ><!-- 2つめ 500px -->
+    </div>
+    <div class="images image1">
+      <img src="image/clutchbag_b.jpg">
+    </div>
+     <div class="images image2"> <!--三段目 -->
+      <span onmouseover="document.all.item('moji3').style.visibility='visible'"
+      onmouseout="document.all.item('moji3').style.visibility='hidden'">
+      <img src="image/clutchbag_f.jpg">
+      </span>
+    </div>
+    <div class="images image3"><!--2段目 166px -->
+      <span onmouseover="document.all.item('moji2').style.visibility='visible'"
+      onmouseout="document.all.item('moji2').style.visibility='hidden'">
+      <img src="image/clutchbag_d.jpg">
+      </span>
+    </div>
+ </div>
+</div>
+
+  <!-- 以下スマホシフト  -->
+<div class="d-block d-md-none" align="center">
+  <div class="pb-3" >
+    <img src="image/clutchbag_b.jpg" width ="250px">
+  </div>
+  <div class="pb-3" >
+    <img src="image/clutchbag_d.jpg" width ="250px">
+  </div>
+  <div class="pb-3" >
+    <img src="image/clutchbag_f.jpg" width ="250px">
+  </div>
+</div>
+
+<footer>
+  <ul class="nav justify-content-center container">
+    <li class="nav-item">
+      <a class="nav-link active" href="info.html">Information</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="designer.html">Designer</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.wantedly.com/">Recruitment</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="mailto:saltnem@gmail.com">Contact</a>
+    </li>
+  </ul>
+
+
+
+  <ul class="follow-me">
+      <li><a href="https://twitter.com/otonadietclub" class="twitter" target="_blank"></a><li>
+      <li><a href="https://www.facebook.com/profile.php?id=100029340949814" class="facebook" target="_blank"></a></li>
+      <li></li>
+      <li><a href="https://www.instagram.com/origamibag_official/" class="insta_btn" target="_blank"><span class="insta"><i class="fab fa-instagram"></i></a></li>
+  </ul>
+  <div class="copylight pt-1">
+copylight @ 2019 Origami all rights reserved
+  </div>
+</footer>
+</body>
+</html>
